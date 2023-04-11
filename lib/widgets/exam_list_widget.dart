@@ -24,7 +24,7 @@ class _ExamListWidgetState extends State<ExamListWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 600,
       child: ListView.builder(
         itemCount: 20,
         itemBuilder: (ctx, ind) {

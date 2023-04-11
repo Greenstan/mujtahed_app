@@ -4,6 +4,7 @@ import '../components/app_appbar.dart';
 import './schedule.dart';
 import './settings.dart';
 import './exams_list.dart';
+import './chatbot.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final pagesList = [
     Settings(),
     ExamsList(),
+    StudyHelper(),
     Schedule(),
   ];
 

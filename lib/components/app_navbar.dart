@@ -23,8 +23,12 @@ class NavBar extends StatelessWidget {
           text: "Settings",
         ),
         GButton(
-          icon: Icons.sunny,
-          text: "Main",
+          icon: Icons.library_books,
+          text: "Exams",
+        ),
+        GButton(
+          icon: Icons.chat,
+          text: "Chat",
         ),
         GButton(
           icon: Icons.schedule,
@@ -74,7 +78,7 @@ class NavBar extends StatelessWidget {
 //                   onPressed: () {}),
 //               IconBottomBar(
 //                   text: "Calendar",
-//                   icon: Icons.date_range_outlined,
+//                   icon: Icons.schedule_outlined,
 //                   selected: false,
 //                   onPressed: () {})
 //             ],
@@ -130,7 +134,7 @@ class NavBar extends StatelessWidget {
 //   final IconData icon;
 //   final bool selected;
 //   final Function() onPressed;
-//   final orangeColor = const Color(0xffFF8527);
+//   final orangeColor = Colors.cyan;
 //   @override
 //   Widget build(BuildContext context) {
 //     return CircleAvatar(

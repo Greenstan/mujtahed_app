@@ -1,1 +1,1 @@
-class Subject {}
+class SubjectModel {}

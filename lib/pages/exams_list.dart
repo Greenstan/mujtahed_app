@@ -12,16 +12,29 @@ class _ExamsListState extends State<ExamsList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
-        Container(
-          margin: EdgeInsets.all(30),
-          child: Text(
-            "Exams",
-            style: TextStyle(fontSize: 40),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.all(30),
+            child: Text(
+              "Exams",
+              style: TextStyle(fontSize: 40),
+            ),
           ),
-        ),
-        ExamListWidget(),
-      ]),
+          ExamListWidget(),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                    EdgeInsets.symmetric(vertical: 30, horizontal: 300)),
+              ),
+              child: Icon(Icons.add),
+              onPressed: () {},
+            ),
+          )
+        ],
+      ),
     );
   }
 }

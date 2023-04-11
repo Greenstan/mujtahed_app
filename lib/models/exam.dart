@@ -1,13 +1,13 @@
 import './subject.dart';
 
-class Exam {
+class ExamModel {
   String type;
   String name;
   String courseID;
   String examDate;
-  List<Subject> subjectList;
+  List<SubjectModel> subjectList;
 
-  Exam({
+  ExamModel({
     required this.type,
     required this.name,
     required this.courseID,
