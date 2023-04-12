@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/exam_list_widget.dart';
 import '../widgets/exam_item.dart';
+import '../components/addExam_form.dart';
 
 class ExamsList extends StatefulWidget {
   ExamsList({Key? key}) : super(key: key);
@@ -19,7 +20,10 @@ class _ExamsListState extends State<ExamsList> {
             margin: EdgeInsets.all(30),
             child: Text(
               "Exams",
-              style: TextStyle(fontSize: 40),
+              style: TextStyle(
+                fontSize: 40,
+                fontFamily: "Oswald",
+              ),
             ),
           ),
           ExamListWidget(),
@@ -38,7 +42,13 @@ class _ExamsListState extends State<ExamsList> {
                   ],
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return AddExamForm();
+                    });
+              },
             ),
           ),
         ],

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import '../models/exam.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -17,10 +19,11 @@ class ExamWidget extends StatelessWidget {
     }
   }
 
+  // Function to calculate how many days remaining until the exam (in days)
   int examDateToNow() {
     DateTime examDateValue = examObj.examDate;
     DateTime now = DateTime.now();
-    int difference = examDateValue.difference(now).inDays;
+    int difference = examDateValue.difference(now).inDays.round();
     return difference;
   }
 
@@ -32,23 +35,25 @@ class ExamWidget extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: mainWidgetColor(this.examObj.type),
+              color: mainWidgetColor(examObj.type),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    this.examObj.name,
+                    examObj.type,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
+                      fontFamily: "Oswald",
                     ),
                   ),
                   Text(
-                    this.examObj.courseID,
+                    examObj.courseID,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
+                      fontFamily: "Oswald",
                     ),
                   ),
                   Text(
@@ -56,11 +61,13 @@ class ExamWidget extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
+                      fontFamily: "Oswald",
                     ),
                   ),
                 ],
               ),
             ),
+
             //Main body of Exam Card
             Container(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -71,14 +78,15 @@ class ExamWidget extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.date_range_rounded,
-                        size: 50,
+                        size: 40,
                       ),
                       Text(
-                        "${this.examObj.examDate.day}/${this.examObj.examDate.month}",
+                        "${examObj.examDate.day}/${examObj.examDate.month}",
                         style: TextStyle(fontSize: 20),
                       )
                     ],
                   ),
+                  // Button to go to the exam's details page
                   ElevatedButton(
                     child: Container(
                       padding: EdgeInsets.symmetric(
@@ -94,7 +102,7 @@ class ExamWidget extends StatelessWidget {
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        mainWidgetColor(this.examObj.type),
+                        mainWidgetColor(examObj.type),
                       ),
                     ),
                     onPressed: () {},
@@ -104,9 +112,13 @@ class ExamWidget extends StatelessWidget {
                     radius: 40,
                     percent: 0.03,
                     lineWidth: 10,
-                    progressColor: mainWidgetColor(this.examObj.type),
+                    progressColor: mainWidgetColor(examObj.type),
                     center: Text("3%"),
-                  )
+                  ),
+                  // GradientButtonFb1(
+                  //   text: "Text",
+                  //   onPressed: () => {},
+                  // ),
                 ],
               ),
             ),
@@ -116,3 +128,45 @@ class ExamWidget extends StatelessWidget {
     );
   }
 }
+
+
+//Test for later
+// class GradientButtonFb1 extends StatelessWidget {
+//   final String text;
+//   final Function() onPressed;
+//   const GradientButtonFb1(
+//       {required this.text, required this.onPressed, Key? key})
+//       : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     const primaryColor = Color(0xff4338CA);
+//     const secondaryColor = Color(0xff6D28D9);
+//     const accentColor = Color(0xffffffff);
+
+//     const double borderRadius = 15;
+
+//     return DecoratedBox(
+//         decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(borderRadius),
+//             gradient:
+//                 const LinearGradient(colors: [primaryColor, secondaryColor])),
+//         child: ElevatedButton(
+//           style: ButtonStyle(
+//               elevation: MaterialStateProperty.all(0),
+//               alignment: Alignment.center,
+//               padding: MaterialStateProperty.all(const EdgeInsets.only(
+//                   right: 75, left: 75, top: 15, bottom: 15)),
+//               backgroundColor: MaterialStateProperty.all(Colors.transparent),
+//               shape: MaterialStateProperty.all(
+//                 RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(borderRadius)),
+//               )),
+//           onPressed: onPressed,
+//           child: Text(
+//             text,
+//             style: const TextStyle(color: accentColor, fontSize: 16),
+//           ),
+//         ));
+//   }
+// }

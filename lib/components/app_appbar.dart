@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             "Mujtahed",
             style: TextStyle(
               color: Colors.black,
-              fontFamily: 'Roboto',
+              fontFamily: 'Oswald',
               fontWeight: FontWeight.bold,
               fontSize: 30,
             ),

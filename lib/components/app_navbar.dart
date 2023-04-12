@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -13,6 +13,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GNav(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      selectedIndex: 1,
       backgroundColor: Theme.of(context).primaryColor,
       // Function to pass the value of the tab to the onChangeFunction
       onTabChange: (val) => onTabChange!(val),

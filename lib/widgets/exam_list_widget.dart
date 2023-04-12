@@ -16,22 +16,43 @@ class _ExamListWidgetState extends State<ExamListWidget> {
       type: "Quiz",
       name: "Quiz 1",
       courseID: "MA111",
-      examDate: DateTime(DateTime.now().year, 4, 19),
-      subjectList: [SubjectModel()],
+      examDate: DateTime(DateTime.now().year, 4, 14),
+      subjectList: [
+        SubjectModel(
+          name: "name",
+          description: "Something",
+          difficulty: 4,
+          isCompleted: false,
+        )
+      ],
     ),
     ExamModel(
       type: "Mid",
       name: "Mid",
       courseID: "CE212",
       examDate: DateTime(DateTime.now().year, 4, 30),
-      subjectList: [SubjectModel()],
+      subjectList: [
+        SubjectModel(
+          name: "name",
+          description: "Something",
+          difficulty: 4,
+          isCompleted: false,
+        )
+      ],
     ),
     ExamModel(
       type: "Final",
       name: "Final",
       courseID: "MA203",
       examDate: DateTime(DateTime.now().year, 5, 10),
-      subjectList: [SubjectModel()],
+      subjectList: [
+        SubjectModel(
+          name: "name",
+          description: "Something",
+          difficulty: 4,
+          isCompleted: false,
+        )
+      ],
     ),
   ];
   @override
