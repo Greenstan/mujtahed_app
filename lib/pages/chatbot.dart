@@ -15,7 +15,7 @@ class _StudyHelperState extends State<StudyHelper> {
       child: Column(
         children: [
           Text(
-            "StudyHelper",
+            "Study Helper",
             style: TextStyle(
               fontSize: 40,
               fontFamily: 'Roboto',

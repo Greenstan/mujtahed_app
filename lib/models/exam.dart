@@ -4,7 +4,7 @@ class ExamModel {
   String type;
   String name;
   String courseID;
-  String examDate;
+  DateTime examDate;
   List<SubjectModel> subjectList;
 
   ExamModel({

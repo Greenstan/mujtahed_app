@@ -8,6 +8,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // static const Color mainColorBase = Colors.cyan;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Mujtahed',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
       home: MyHomePage(),
     );

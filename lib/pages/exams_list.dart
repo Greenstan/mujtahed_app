@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/exam_list_widget.dart';
+import '../widgets/exam_item.dart';
 
 class ExamsList extends StatefulWidget {
   ExamsList({Key? key}) : super(key: key);
@@ -22,17 +23,24 @@ class _ExamsListState extends State<ExamsList> {
             ),
           ),
           ExamListWidget(),
+          //Button section
           Container(
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(vertical: 30, horizontal: 300)),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.add,
+                    ),
+                  ],
+                ),
               ),
-              child: Icon(Icons.add),
               onPressed: () {},
             ),
-          )
+          ),
         ],
       ),
     );

@@ -13,7 +13,7 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GNav(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      backgroundColor: Colors.cyan.shade100,
+      backgroundColor: Theme.of(context).primaryColor,
       // Function to pass the value of the tab to the onChangeFunction
       onTabChange: (val) => onTabChange!(val),
       gap: 8,
