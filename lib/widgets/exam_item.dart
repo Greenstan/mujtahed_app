@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/models/subject.dart';
 import '../models/exam.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -10,12 +11,15 @@ class ExamWidget extends StatelessWidget {
 
 // Function to select color based off of the type of exam
   MaterialColor mainWidgetColor(String examType) {
-    if (examType == "Final") {
-      return Colors.red;
-    } else if (examType == "Mid") {
-      return Colors.blue;
-    } else {
-      return Colors.orange;
+    switch (examType) {
+      case 'Final':
+        return Colors.red;
+      case 'Mid':
+        return Colors.blue;
+      case 'Quiz':
+        return Colors.orange;
+      default:
+        return Colors.grey;
     }
   }
 
@@ -25,6 +29,14 @@ class ExamWidget extends StatelessWidget {
     DateTime now = DateTime.now();
     int difference = examDateValue.difference(now).inDays.round();
     return difference;
+  }
+
+  double percentageOfCompleted() {
+    List<SubjectModel> subjectsCompleted =
+        examObj.subjectList.where((element) => element.isCompleted).toList();
+    double percentComplete =
+        (subjectsCompleted.length / examObj.subjectList.length);
+    return percentComplete;
   }
 
   @override
@@ -40,12 +52,16 @@ class ExamWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    examObj.type,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontFamily: "Oswald",
+                  Flexible(
+                    child: Text(
+                      examObj.name,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontFamily: "Oswald",
+                      ),
                     ),
                   ),
                   Text(
@@ -110,10 +126,10 @@ class ExamWidget extends StatelessWidget {
                   //Percent of Subjects studied
                   CircularPercentIndicator(
                     radius: 40,
-                    percent: 0.03,
+                    percent: percentageOfCompleted(),
                     lineWidth: 10,
                     progressColor: mainWidgetColor(examObj.type),
-                    center: Text("3%"),
+                    center: Text("${(percentageOfCompleted() * 100).toInt()}%"),
                   ),
                   // GradientButtonFb1(
                   //   text: "Text",
