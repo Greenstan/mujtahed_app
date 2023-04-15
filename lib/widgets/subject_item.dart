@@ -20,7 +20,7 @@ class subjectWidget extends StatefulWidget {
 }
 
 class _subjectWidgetState extends State<subjectWidget> {
-  // To access subjectObj properties add widget. before the property (Ex. widget.subjectObj.name)
+  // Note: To access subjectObj properties add widget. before the property (Ex. widget.subjectObj.name)
 
   MaterialColor progressColor() {
     int difficultyValue = (widget.subjectObj.difficulty);

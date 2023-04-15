@@ -64,8 +64,27 @@ class _AddExamFormState extends State<AddExamForm> {
 
 ////////////// Outer Widget functions
   void addExam() {
-    widget.addThisExam(examNameController.text, courseIDController.text,
-        currentExamTypeSelection, selectedDate, subjectsList);
+    // To make sure all fields are filled
+    try {
+      widget.addThisExam(examNameController.text, courseIDController.text,
+          currentExamTypeSelection, selectedDate, subjectsList);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                height: 80,
+                child: Column(
+                  children: [
+                    ExitWidget(),
+                    Text("Not all fields filled !!!"),
+                  ],
+                ),
+              ),
+            );
+          });
+    }
   }
 
 // Function to decide color based off of the exam type
@@ -133,6 +152,7 @@ class _AddExamFormState extends State<AddExamForm> {
             hint: Text("Choose the exam type"),
             value: currentExamTypeSelection,
             items:
+                // Map each item from the possible quiz type selections to the DropdownMenuItem widget
                 examTypesList.map<DropdownMenuItem<String>>((String typeVal) {
               return DropdownMenuItem<String>(
                 value: typeVal,

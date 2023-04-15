@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/providers/study_time_provider.dart';
 import './pages/home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // Declare providers used in app
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => StudyTimeProvider(),
+        )
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

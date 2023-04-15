@@ -31,12 +31,18 @@ class ExamWidget extends StatelessWidget {
     return difference;
   }
 
+// Calculate how many subjects were completed as a percentage
   double percentageOfCompleted() {
+    // Conditinal sublist creation
+    if(examObj.subjectList.length != 0){
     List<SubjectModel> subjectsCompleted =
         examObj.subjectList.where((element) => element.isCompleted).toList();
     double percentComplete =
         (subjectsCompleted.length / examObj.subjectList.length);
     return percentComplete;
+    }else{
+      return 0;
+    }
   }
 
   @override
@@ -144,7 +150,6 @@ class ExamWidget extends StatelessWidget {
     );
   }
 }
-
 
 //Test for later
 // class GradientButtonFb1 extends StatelessWidget {
