@@ -5,15 +5,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    // Declare providers used in app
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => StudyTimeProvider(),
-        )
-      ],
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -24,13 +16,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mujtahed',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
+    // Declare providers used in app
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<StudyTimeProvider>(
+          create: (context) => StudyTimeProvider(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Mujtahed',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+        ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(),
     );
   }
 }

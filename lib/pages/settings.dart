@@ -12,7 +12,6 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   final TextEditingController startTimeController = TextEditingController();
   final TextEditingController endTimeController = TextEditingController();
-
 // Time variables to temporarily store Datepicker data to then be passed to the appropriate setter
   TimeOfDay? startTime;
   TimeOfDay? endTime;
@@ -59,13 +58,16 @@ class _SettingsState extends State<Settings> {
                         initialEntryMode: TimePickerEntryMode.input,
                       );
                       // Change provider start time
+                      if (startTime != null) {
+                        studyTimeProv.startTime = startTime!;
 
-                      studyTimeProv.startTime = startTime!;
-
-                      setState(() {
-                        startTimeController.text =
-                            studyTimeProv.startTimeGetter.format(context);
-                      });
+                        setState(() {
+                          startTimeController.text =
+                              studyTimeProv.startTimeGetter.format(context);
+                        });
+                        // Apply changes immediately
+                        studyTimeProv.changeListeners();
+                      }
                     },
                   ),
                 ),
@@ -98,18 +100,22 @@ class _SettingsState extends State<Settings> {
                         initialEntryMode: TimePickerEntryMode.input,
                       );
                       // Change provider end time
-                      studyTimeProv.endTime = endTime!;
+                      if (endTime != null) {
+                        studyTimeProv.endTime = endTime!;
 
-                      setState(() {
-                        endTimeController.text =
-                            studyTimeProv.endTimeGetter.format(context);
-                      });
+                        setState(() {
+                          endTimeController.text =
+                              studyTimeProv.endTimeGetter.format(context);
+                        });
+                        // Apply changes immediately
+                        studyTimeProv.changeListeners();
+                      }
                     },
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

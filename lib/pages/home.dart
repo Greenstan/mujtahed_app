@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/providers/study_time_provider.dart';
+import 'package:provider/provider.dart';
 import '../components/app_navbar.dart';
 import '../components/app_appbar.dart';
 import './schedule.dart';
