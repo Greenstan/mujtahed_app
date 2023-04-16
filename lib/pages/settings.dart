@@ -11,12 +11,18 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   final TextEditingController startTimeController = TextEditingController();
+  final TextEditingController endTimeController = TextEditingController();
+
+// Time variables to temporarily store Datepicker data to then be passed to the appropriate setter
   TimeOfDay? startTime;
+  TimeOfDay? endTime;
 
   @override
   Widget build(BuildContext context) {
-    final startTimeProv = Provider.of<StudyTimeProvider>(context);
-    startTimeController.text = startTimeProv.startTimeGetter.format(context);
+    final studyTimeProv = Provider.of<StudyTimeProvider>(context);
+    startTimeController.text = studyTimeProv.startTimeGetter.format(context);
+    endTimeController.text = studyTimeProv.endTimeGetter.format(context);
+
     return Container(
       margin: EdgeInsets.all(30),
       height: 700,
@@ -27,6 +33,7 @@ class _SettingsState extends State<Settings> {
             "Settings",
             style: TextStyle(fontSize: 40),
           ),
+          // Start Time Picker
           Container(
             padding: EdgeInsets.all(30),
             child: Row(
@@ -48,14 +55,54 @@ class _SettingsState extends State<Settings> {
                     onTap: () async {
                       startTime = await showTimePicker(
                         context: context,
-                        initialTime: startTimeProv.startTimeGetter,
+                        initialTime: studyTimeProv.startTimeGetter,
                         initialEntryMode: TimePickerEntryMode.input,
                       );
-                      startTimeProv.startTime = startTime!;
+                      // Change provider start time
+
+                      studyTimeProv.startTime = startTime!;
 
                       setState(() {
                         startTimeController.text =
-                            startTimeProv.startTimeGetter.format(context);
+                            studyTimeProv.startTimeGetter.format(context);
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // End Time Picker
+          Container(
+            padding: EdgeInsets.all(30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "End Time",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                Container(
+                  width: 150,
+                  child: TextField(
+                    onSubmitted: (_) {},
+                    readOnly: true,
+                    textAlign: TextAlign.center,
+                    controller: endTimeController,
+                    onTap: () async {
+                      endTime = await showTimePicker(
+                        context: context,
+                        initialTime: studyTimeProv.endTimeGetter,
+                        initialEntryMode: TimePickerEntryMode.input,
+                      );
+                      // Change provider end time
+                      studyTimeProv.endTime = endTime!;
+
+                      setState(() {
+                        endTimeController.text =
+                            studyTimeProv.endTimeGetter.format(context);
                       });
                     },
                   ),

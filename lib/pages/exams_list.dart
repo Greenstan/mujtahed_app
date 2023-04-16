@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mujtahed_app/providers/study_time_provider.dart';
 import 'package:provider/provider.dart';
-import '../widgets/exam_list_widget.dart';
+import '../components/exam_list_component.dart';
 import '../widgets/exam_item.dart';
 import '../components/add_exam_form.dart';
 import '../models/exam.dart';
@@ -50,7 +50,6 @@ class _ExamsListState extends State<ExamsList> {
   @override
   Widget build(BuildContext context) {
     // The providers will be called every time the page is run therefore the initialization must be doen in the build widget
-    final startTimeProv = Provider.of<StudyTimeProvider>(context);
 
     return Container(
       child: Column(
@@ -68,9 +67,7 @@ class _ExamsListState extends State<ExamsList> {
           ExamListWidget(
             examList: mainExamList,
           ),
-          Text(
-            startTimeProv.startTime.format(context),
-          ),
+
           //Button section
           Container(
             padding: EdgeInsets.all(20),

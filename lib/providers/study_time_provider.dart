@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 class StudyTimeProvider extends ChangeNotifier {
   // Provider attributes to be access
   TimeOfDay startTime = TimeOfDay(hour: 8, minute: 30);
-  TimeOfDay endTime = TimeOfDay(hour: 20, minute: 30);
+  TimeOfDay endTime = TimeOfDay(hour: 22, minute: 30);
 
   //  getters for the attributes, used to acess the data
   TimeOfDay get startTimeGetter => startTime;
-  TimeOfDay get endTimeGetter => startTime;
+  TimeOfDay get endTimeGetter => endTime;
 
   // Set the attribute values using (provider name).startTime = inputtedTime
   set startTimeSetter(TimeOfDay inputtedTime) {

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
-
 import 'package:flutter/material.dart';
 import 'package:mujtahed_app/models/subject.dart';
 import 'package:percent_indicator/percent_indicator.dart';
