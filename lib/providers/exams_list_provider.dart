@@ -7,13 +7,13 @@ class ExamListProvider with ChangeNotifier {
   List<ExamModel> examsMainList = [
     ExamModel(
       type: "Quiz",
-      name: "Quiz 1",
+      name: "Determinants",
       courseID: "MA111",
       examDate: DateTime(DateTime.now().year, 4, 19),
       subjectList: [
         SubjectModel(
-          name: "name",
-          description: "Something",
+          name: "Applying Determinants",
+          description: "How to apply determinants",
           difficulty: 4,
           isCompleted: false,
         )

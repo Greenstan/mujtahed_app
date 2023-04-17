@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/chatgptHandler/components/chatbot.dart';
 
 class StudyHelper extends StatefulWidget {
   StudyHelper({Key? key}) : super(key: key);
@@ -10,19 +11,6 @@ class StudyHelper extends StatefulWidget {
 class _StudyHelperState extends State<StudyHelper> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Text(
-            "Study Helper",
-            style: TextStyle(
-              fontSize: 40,
-              fontFamily: 'Roboto',
-            ),
-          ),
-        ],
-      ),
-    );
+    return ChatbotComponent();
   }
 }

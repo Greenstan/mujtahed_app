@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/chatgptHandler/providers/chats_providers.dart';
+import 'package:mujtahed_app/chatgptHandler/providers/models_provider.dart';
+import 'package:mujtahed_app/pages/splash_page.dart';
 import 'package:mujtahed_app/providers/exams_list_provider.dart';
 import 'package:mujtahed_app/providers/study_time_provider.dart';
 import './pages/home.dart';
@@ -26,6 +29,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ExamListProvider>(
           create: (context) => ExamListProvider(),
+        ),
+        ChangeNotifierProvider<ChatProvider>(
+          create: (context) => ChatProvider(),
+        ),
+        ChangeNotifierProvider<ModelsProvider>(
+          create: (context) => ModelsProvider(),
         )
       ],
       child: MaterialApp(
@@ -34,7 +43,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: MyHomePage(),
+        // home: MyHomePage(),
+        initialRoute: '/',
+
+        routes: {
+          '/': (context) => SplashScreenPage(),
+        },
       ),
     );
   }

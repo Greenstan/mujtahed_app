@@ -6,7 +6,7 @@ import '../components/app_appbar.dart';
 import './schedule.dart';
 import './settings.dart';
 import './exams_list.dart';
-import './chatbot.dart';
+import './study_helper_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);

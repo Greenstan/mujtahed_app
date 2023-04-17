@@ -48,6 +48,8 @@ dependencies:
   firebase_core: ^2.3.0
   firebase_auth: ^4.4.1
   get: ^4.6.5
+  sleek_circular_slider: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:

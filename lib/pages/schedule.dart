@@ -70,7 +70,7 @@ class _ScheduleState extends State<Schedule> {
             child: TimePlanner(
               style: TimePlannerStyle(
                 cellHeight: 60,
-                cellWidth: 60,
+                cellWidth: 120,
                 showScrollBar: true,
                 horizontalTaskPadding: 5,
               ),
