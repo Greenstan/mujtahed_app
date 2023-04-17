@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/providers/exams_list_provider.dart';
 import 'package:mujtahed_app/providers/study_time_provider.dart';
 import 'package:provider/provider.dart';
 import '../components/exam_list_component.dart';
@@ -15,40 +16,20 @@ class ExamsList extends StatefulWidget {
 }
 
 class _ExamsListState extends State<ExamsList> {
-  List<ExamModel> mainExamList = [
-    ExamModel(
-      type: "Quiz",
-      name: "Quiz 1",
-      courseID: "MA111",
-      examDate: DateTime(DateTime.now().year, 4, 19),
-      subjectList: [
-        SubjectModel(
-          name: "name",
-          description: "Something",
-          difficulty: 4,
-          isCompleted: false,
-        )
-      ],
-    ),
-  ];
-
-////////  Inner Widget functions
-  void addExamToList(String name, String courseID, String examType,
-      DateTime examDate, List<SubjectModel> subjectsList) {
-    final newExam = ExamModel(
-        type: examType,
-        name: name,
-        courseID: courseID,
-        examDate: examDate,
-        subjectList: subjectsList);
-    setState(() {
-      mainExamList.add(newExam);
-    });
-    Navigator.pop(context);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final examListProviderInstance = Provider.of<ExamListProvider>(context);
+
+////////  Inner Widget functions
+    void addExamToList(String name, String courseID, String examType, DateTime examDate, List<SubjectModel> subjectsList) {
+      final newExam = ExamModel(type: examType, name: name, courseID: courseID, examDate: examDate, subjectList: subjectsList);
+      // setState(() {
+      //   mainExamList.add(newExam);
+      // });
+      examListProviderInstance.addExam(newExam);
+
+      Navigator.pop(context);
+    }
     // The providers will be called every time the page is run therefore the initialization must be doen in the build widget
 
     return Container(
@@ -65,7 +46,7 @@ class _ExamsListState extends State<ExamsList> {
             ),
           ),
           ExamListWidget(
-            examList: mainExamList,
+            examList: examListProviderInstance.examsMainList,
           ),
 
           //Button section

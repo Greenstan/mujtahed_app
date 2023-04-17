@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/components/exam_detail_view.dart';
 import 'package:mujtahed_app/models/subject.dart';
 import '../models/exam.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -34,13 +35,13 @@ class ExamWidget extends StatelessWidget {
 // Calculate how many subjects were completed as a percentage
   double percentageOfCompleted() {
     // Conditinal sublist creation
-    if(examObj.subjectList.length != 0){
-    List<SubjectModel> subjectsCompleted =
-        examObj.subjectList.where((element) => element.isCompleted).toList();
-    double percentComplete =
-        (subjectsCompleted.length / examObj.subjectList.length);
-    return percentComplete;
-    }else{
+    if (examObj.subjectList.length != 0) {
+      List<SubjectModel> subjectsCompleted =
+          examObj.subjectList.where((element) => element.isCompleted).toList();
+      double percentComplete =
+          (subjectsCompleted.length / examObj.subjectList.length);
+      return percentComplete;
+    } else {
       return 0;
     }
   }
@@ -127,7 +128,16 @@ class ExamWidget extends StatelessWidget {
                         mainWidgetColor(examObj.type),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Scaffold(
+                            body: ExamDetailPage(examObj: examObj),
+                          ),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
                   ),
                   //Percent of Subjects studied
                   CircularPercentIndicator(

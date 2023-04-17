@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mujtahed_app/providers/exams_list_provider.dart';
 import 'package:mujtahed_app/providers/study_time_provider.dart';
 import './pages/home.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<StudyTimeProvider>(
           create: (context) => StudyTimeProvider(),
+        ),
+        ChangeNotifierProvider<ExamListProvider>(
+          create: (context) => ExamListProvider(),
         )
       ],
       child: MaterialApp(

@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:mujtahed_app/components/add_subject_form.dart';
 import 'package:mujtahed_app/models/subject.dart';
+import 'package:mujtahed_app/widgets/add_subject_button_widget.dart';
+import 'package:mujtahed_app/widgets/exam_title_widget.dart';
 import 'package:mujtahed_app/widgets/exit_widget.dart';
 import 'package:mujtahed_app/widgets/subject_item.dart';
 
@@ -112,24 +114,25 @@ class _AddExamFormState extends State<AddExamForm> {
         children: [
           ExitWidget(),
           // Form title
-          Container(
-            decoration: BoxDecoration(
-              color: currentColor(),
-            ),
-            padding: EdgeInsets.all(30),
-            child: Text(
-              // if an exam type is selected then display the selection else display "Add Exam"
-              currentExamTypeSelection != null
-                  ? "${currentExamTypeSelection}"
-                  : "Add Exam",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-                fontFamily: "Oswald",
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          ExamTitleWidget(currentExamTypeSelection: currentExamTypeSelection),
+          // Container(
+          //   decoration: BoxDecoration(
+          //     color: currentColor(),
+          //   ),
+          //   padding: EdgeInsets.all(30),
+          //   child: Text(
+          //     // if an exam type is selected then display the selection else display "Add Exam"
+          //     currentExamTypeSelection != null
+          //         ? "${currentExamTypeSelection}"
+          //         : "Add Exam",
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 50,
+          //       fontFamily: "Oswald",
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
           // Form body
           TextField(
             onSubmitted: (_) => addExam(),
@@ -219,22 +222,23 @@ class _AddExamFormState extends State<AddExamForm> {
             ),
           ),
           // Show pop up subject form
-          Column(
-            children: [
-              IconButton(
-                  icon: Icon(Icons.add_box_outlined),
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                              content: AddSubjectForm(
-                            addSubject: addNewSubjectToList,
-                          ));
-                        });
-                  }),
-            ],
-          ),
+          // Column(
+          //   children: [
+          //     IconButton(
+          //         icon: Icon(Icons.add_box_outlined),
+          //         onPressed: () {
+          //           showDialog(
+          //               context: context,
+          //               builder: (context) {
+          //                 return AlertDialog(
+          //                     content: AddSubjectForm(
+          //                   addSubject: addNewSubjectToList,
+          //                 ));
+          //               });
+          //         }),
+          //   ],
+          // ),
+          AddSubjectButtonWidget(addNewSubjectToList: addNewSubjectToList),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
